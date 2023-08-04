@@ -1,0 +1,2 @@
+# LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim
+此为出于个人学习目的，使用ChatGPT对该电子书其进行翻译整理，最终解释权归Unity官方所有。
