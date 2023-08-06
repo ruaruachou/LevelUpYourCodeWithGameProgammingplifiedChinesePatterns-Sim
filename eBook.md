@@ -123,7 +123,7 @@ SOLID是五个软件设计的核心基础的助记符：
 
 如果你忽视了单一职责，你可能会创建一个自定义组件，如下所示：  
 
-![image error](https://www.markdown.xyz/assets/images/san-juan-mountains.jpg)
+![image error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/1.png?raw=true)
 
 ```
 public class UnrefactoredPlayer : MonoBehaviour
