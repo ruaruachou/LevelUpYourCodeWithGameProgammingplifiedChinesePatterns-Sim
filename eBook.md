@@ -154,7 +154,7 @@ public class UnrefactoredPlayer : MonoBehaviour
 ```
 
 这个未重构的Player类的职责混杂。它在玩家与某物碰撞时播放声音，管理输入，并处理移动。即使这个类目前相对较短，但随着你的项目的发展，它将变得难以维护。考虑将Player类拆分为更小的类。
-![image error](https://www.markdown.xyz/assets/images/san-juan-mountains.jpg)
+![image error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/2.png?raw=true)
 ```
 [RequireComponent(typeof(PlayerAudio), typeof(PlayerInput), typeof(PlayerMovement))]
 public class Player : MonoBehaviour
@@ -239,7 +239,7 @@ public class Circle
 
 你希望在不修改原始代码（AreaCalculator的内部）的情况下，打开程序进行扩展（使用新的形状的能力）。虽然它是功能性的，但当前的AreaCalculator违反了开闭原则。  
 
-![image error](https://www.markdown.xyz/assets/images/san-juan-mountains.jpg)  
+![image error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/3.png?raw=true)  
   
   
 相反，考虑定义一个抽象的Shape类：
@@ -284,7 +284,7 @@ public class AreaCalculator
 }
 ```
 修订后的AreaCalculator类现在可以获取任何正确实现抽象Shape类的形状的面积。你可以扩展AreaCalculator的功能，而无需改变任何原始源代码。  
-![image error](https://www.markdown.xyz/assets/images/san-juan-mountains.jpg)  
+![image error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/4.png?raw=true)  
 
 每当你需要一个新的多边形，只需定义一个从Shape继承的新类。每个子类的形状然后覆盖CalculateArea方法来返回正确的面积。  
 这种新的设计使得调试更容易。如果新形状引入了错误，你不必重新访问AreaCalculator。旧代码保持不变，所以你只需要检查新代码中是否有任何逻辑错误。  
@@ -299,7 +299,7 @@ public class AreaCalculator
 里氏替换原则，SOLID的第三个支柱，告诉你如何应用继承，使你的子类更加健壮和灵活。
 
 想象一下，你的游戏需要一个叫做Vehicle的类。这将是你为应用创建的车辆子类的基类。例如，你可能需要一辆汽车或卡车。   
-![image error](https://www.markdown.xyz/assets/images/san-juan-mountains.jpg)
+![image error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/5.png?raw=true)
 
 在你可以使用基类（Vehicle）的任何地方，你应该能够使用像Car或Truck这样的子类，而不会破坏应用程序。
 
@@ -334,7 +334,7 @@ public class Vehicle
 ```
 
 假设你正在构建一个回合制的游戏，你在棋盘上移动车辆。    
-![image error](https://www.markdown.xyz/assets/images/san-juan-mountains.jpg)
+![image error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/6.png?raw=true)
 
 你可以有另一个叫做Navigator的类，来沿着预设的路径驾驶车辆：  
 ```
@@ -353,7 +353,7 @@ public class Navigator
 ```
 
 有了这个类，你期望能够将任何车辆传递给Navigator的Move方法，这对于汽车和卡车都会很好地工作。但是，当你想实现一个叫做Train的类时，会发生什么？  
-![image error](https://www.markdown.xyz/assets/images/san-juan-mountains.jpg)
+![image error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/7.png?raw=true)
 
 
 TurnLeft和TurnRight方法在Train类中不会工作，因为火车不能离开它的轨道。如果你确实将一辆火车传递给Navigator的Move方法，那么当你到达那些行时，它将抛出一个未实现的异常（或者什么也不做）。如果你不能用子类型替代类型，你就违反了里氏替换原则。
@@ -368,7 +368,7 @@ TurnLeft和TurnRight方法在Train类中不会工作，因为火车不能离开�
 + **在建立类层次结构之前考虑类API：** 尽管你把它们都看作是车辆，但是Car和Train继承自不同的父类可能更有意义。现实中的分类并不总是转化为类层次结构。
 + **倾向于组合而不是继承：** 而不是试图通过继承传递功能，创建一个接口或单独的类来封装特定的行为。然后通过混合和匹配来构建不同功能的“组合”。
 
-![image error](https://www.markdown.xyz/assets/images/san-juan-mountains.jpg)
+![image error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/8.png?raw=true)
 
 为了修复这个设计，废弃原来的Vehicle类型，然后将大部分功能移动到接口中：
 ```
@@ -387,7 +387,7 @@ public interface IMovable
 ```  
 通过创建RoadVehicle类型和RailVehicle类型，更加接近地遵循LSP原则。然后Car和Train将从各自的基类中继承。
 
-![image error](https://www.markdown.xyz/assets/images/san-juan-mountains.jpg)  
+![image error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/9.png?raw=true)  
 
 ```
 public class RoadVehicle : IMovable, ITurnable
@@ -485,7 +485,7 @@ public interface IUnitStats
 
 将它分解为几个较小的接口，而不是创建一个给可破坏道具提供太多方法的接口。实现它们的类将只需要混合和匹配它所需要的东西。  
 
-![image error](https://www.markdown.xyz/assets/images/san-juan-mountains.jpg)  
+![image error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/10.png?raw=true)  
 ```
 public interface IMovable
 {
