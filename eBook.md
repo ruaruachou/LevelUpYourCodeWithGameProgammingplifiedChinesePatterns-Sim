@@ -189,6 +189,8 @@ public class PlayerMovement : MonoBehaviour
 ```
 Player脚本仍然可以管理其他的脚本组件，但每个类只做一件事。这种设计使得修改代码变得更容易，特别是随着你的项目需求随时间的变化。另一方面，你需要用一定的常识来平衡单一职责原则。不要过度简化到创建只有一个方法的类的极端。
 
+另一方面，你需要在单一职责原则和常识之间找到平衡。不要过度简化到只创建一个方法的类的极端。
+
 在使用单一职责原则时，要牢记以下目标：
 
 + 可读性：短的类更容易阅读。没有硬性规定，但许多开发者设置了200-300行的限制。自己或作为一个团队确定什么构成“短”。当超过这个阈值时，决定是否可以将其重构成更小的部分。
@@ -196,6 +198,16 @@ Player脚本仍然可以管理其他的脚本组件，但每个类只做一件�
 + 可重用性：设计你的类使其小而模块化，这样你可以在游戏的其他部分重用它们。  
 
 在重构时，考虑重新排列代码将如何改善自己或其他团队成员的生活质量。一开始的一些额外努力可以在后来为你节省很多麻烦。  
+
+>**简单并不等于容易**
+>在软件设计中，我们经常讨论简单性，它是可靠性的前提。你的软件设计能够处理生产中的变化吗？随着时间的推移，你能扩展和维护你的应用程序吗？
+>
+>本指南中介绍的许多设计模式和原则都帮助你实现简单性。这样做使你的代码更具可扩展性、灵活性和可读性。然而，它们需要一些额外的工作和规划。"简单"并不等于"容易"。
+>
+>尽管你可以在不使用模式的情况下创建相同的功能（并且通常更快），但快速和容易不一定导致简单。使某事简单意味着使其更加集中。设计它来做一件事，不要用其他任务过度复杂化它。
+>
+>请查看Rich Hickey的讲座[《简单即易》](https://www.infoq.com/presentations/Simple-Made-Easy/)，以了解简单性如何帮助你构建更好的软件。
+
 <br> 
 
 ###  2.2. <a name='-1'></a>开闭原则
@@ -559,14 +571,14 @@ public class EnemyUnit : MonoBehaviour, IDamageable, IMovable, IUnit-Stats
 理想情况下，应尽可能减少类之间的依赖。每个类也需要其内部部分一致地协同工作，而不是依赖于外部连接。当对象基于内部或私有逻辑进行操作时，被认为是有凝聚力的。  
 
 在最佳情况下，应寻求松散的耦合和高度的凝聚。  
-![image error](https://www.markdown.xyz/assets/images/san-juan-mountains.jpg) 
+![image error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/11.png?raw=true) 
 
 你需要能够修改和扩展你的游戏应用程序。如果它脆弱且抵制修改，那么就调查一下它目前的结构。  
 
 依赖反转原则可以帮助减少类之间的紧密耦合。在构建应用程序中的类和系统时，有些自然是“高级”的，有些是“低级”的。高级类依赖于低级类来完成某些工作。SOLID告诉我们要改变这种情况。  
 
 假设你正在制作一个游戏，角色在关卡中探索并触发门打开。你可能想要创建一个叫做Switch的类和另一个叫做Door的类。  
-![image error](https://www.markdown.xyz/assets/images/san-juan-mountains.jpg)   
+![image error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/12.png?raw=true)   
 
 在高层次上，你希望角色移动到一个特定的位置，并且发生一些事情。Switch将负责这个。  
 
@@ -612,7 +624,7 @@ Switch可以调用Toggle方法来打开和关闭门。这是可行的，但问�
 
 再一次，抽象拯救了你。你可以在你的类之间加一个叫做ISwitchable的接口。  
 
-![image error](https://www.markdown.xyz/assets/images/san-juan-mountains.jpg)     
+![image error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/13.png?raw=true)     
 
 ISwitchable只需要一个公共属性，所以你知道它是否活跃，再加上一对激活和停用它的方法。  
 
@@ -674,16 +686,25 @@ public class Door : MonoBehaviour, ISwitchable
 
 这使你能够创建更多Switch可以激活的类。无论是陷阱门还是激光束，高级Switch都可以工作。它只需要一个实现ISwitchable的兼容客户端。  
 
-![image error](https://www.markdown.xyz/assets/images/san-juan-mountains.jpg)     
+![image error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/14.png?raw=true)     
 
 和SOLID的其余部分一样，依赖反转原则要求你检查你通常如何设置类之间的关系。方便地通过松散耦合来扩展你的项目。  
   
-
+>**接口与抽象类**
+>
+>遵循“优先考虑组合而不是继承”的哲学，在本指南中的许多示例使用接口。然而，你也可以使用抽象类来遵循许多设计原则和模式。
+>
+>这两种都是在C#中实现抽象的有效方法。你使用哪种取决于你的实际需求。
+>
+>**抽象类**
+>
+>抽象关键字允许你定义一个基类，这样你可以通过继承将公共功能（方法、字段、常量等）传递给子类。
+>
 > 你不能直接实例化一个抽象类。相反，你需要派生一个具体的类。  
 >
 >在前面的例子中，一个抽象类可以实现相同的依赖反转，只是用了不同的方法。所以，而不是使用接口，从一个叫做Switchable的抽象类派生一个具体的类（例如，Light或Door）。  
 >
->![image error](https://www.markdown.xyz/assets/images/san-juan-mountains.jpg) 
+>![image error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/15.png?raw=true) 
 >
 >继承定义了一个“是一个”关系。上图显示的都是可以打开和关闭的“可切换”的事物。 
 >
@@ -691,7 +712,7 @@ public class Door : MonoBehaviour, ISwitchable
 >
 >继承在你想创建一个具有两个不同基类特性的派生类时表现得很好。在C#中，你不能从多个基类继承。  
 >
->![image error](https://www.markdown.xyz/assets/images/san-juan-mountains.jpg)   
+>![image error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/16.png?raw=true)   
 >
 >如果你有另一个抽象类，用于游戏中的所有机器人，那么决定从哪个基类派生就比较困难了。你是使用Robot还是Switchable基类？  
 >
@@ -702,6 +723,8 @@ public class Door : MonoBehaviour, ISwitchable
 >然而，接口只包含它们成员的声明。实际实现接口的类将负责制定具体的逻辑。  
 >
 >因此，这不总是一个非此即彼的决定。在你想共享代码的地方，使用抽象类定义基础功能。在你需要灵活性的地方，使用接口定义周边能力。  
+>在这个例子中，你可以从Robot基类派生出NPC以继承其核心功能，但然后使用ISwitchable接口来增加打开和关闭NPC的能力。
+>![connect lost](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/17.png?raw=true)
 >
 >记住抽象类和接口之间的以下区别  
 >
@@ -792,6 +815,8 @@ SOLID原则是帮助你编写更清晰代码的指导方针，这样它更容易
 
 Unity已经处理了这个，所以你不需要自己实现它。你只需要使用MonoBehaviour方法来管理游戏玩法，比如Update、LateUpdate和FixedUpdate。
 
+**Patterns within Unity**
+
 + 游戏循环：所有游戏的核心都是一个无限循环，它必须独立于时钟速度运行，因为支持游戏应用程序的硬件可能会有很大的差异。为了考虑到不同速度的计算机，游戏开发者通常需要使用固定的时间步长（设定每秒帧数）和变量时间步长，其中引擎测量自上一帧以来已经过去的时间。
 Unity已经处理了这一点，所以你不需要自己实现它。您只需要使用MonoBehaviour方法，如Update、LateUpdate和FixedUpdate来管理游戏玩法。
 + **更新：** 在你的游戏应用中，你通常会一帧一帧地更新每个对象的行为。虽然你可以在Unity中手动重建这个，但是MonoBehaviour类会自动做这个。简单地使用适当的Update、LateUpdate或FixedUpdate方法来修改你的GameObject和组件以适应游戏时钟的一个刻度。
@@ -808,7 +833,7 @@ Unity的[Prefab](https://docs.unity3d.com/Manual/Prefabs.html)系统实现了Gam
 
 <br>
 
->![image error](https://www.markdown.xyz/assets/images/san-juan-mountains.jpg)   
+>![image error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/18.png?raw=true)   
 
 有时候，拥有一个特殊的对象来创建其他对象是有帮助的。许多游戏在游戏过程中会生成各种事物，你通常不知道在实际需要之前运行时需要什么。
   
@@ -847,7 +872,7 @@ public abstract class Factory : MonoBehaviour
 
 他们可以产生这样的结构：
 
->![image error](https://www.markdown.xyz/assets/images/san-juan-mountains.jpg) 
+>![image error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/19.png?raw=true) 
 
 IProduct接口定义了你的产品之间的共同点。在这种情况下，你只有一个ProductName属性和产品在Initialize时运行的任何逻辑。
 
@@ -913,9 +938,9 @@ public class ConcreteFactoryA : Factory
 
 将每个产品的内部逻辑分离到它自己的类中，保持工厂代码相对较短。每个工厂只知道调用每个产品上的Initialize，而不了解底层的细节。
 
-The downside is that you create a number of classes and subclasses to implement the pattern . Like the other patterns, this introduces a bit of overhead, which may be unnecessary if you don’t have a large variety of products .
+缺点是你需要创建许多类和子类来实现这个模式。和其他模式一样，这引入了一些开销，如果你没有大量的产品种类，这可能是不必要的。
 
->![image error](https://www.markdown.xyz/assets/images/san-juan-mountains.jpg) 
+>![image error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/20.png?raw=true) 
 
 一个产品播放声音，而另一个播放粒子。两者都使用相同的接口。
 <br>  
@@ -946,7 +971,7 @@ The downside is that you create a number of classes and subclasses to implement 
 
 对象池可以减少可能由于垃圾收集峰值而导致的卡顿。GC峰值经常伴随着创建或销毁大量对象，这是由于内存的分配。你可以在合适的时候预先实例化你的对象池，比如在加载屏幕上，这样用户就不会注意到卡顿。
 
->![image error](https://www.markdown.xyz/assets/images/san-juan-mountains.jpg)
+>![image error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/21.png?raw=true)
 
 ###  5.1. <a name='-1'></a>示例：简单的池系统
 <br>
@@ -1050,7 +1075,7 @@ public class PooledObject : MonoBehaviour
 
 在弹头本身上有一个ExampleProjectile脚本和一个PooledObject脚本。ExampleProjectile有一个Deactivate方法，可以在几秒钟后禁用每个发射的子弹GameObject，将其返回到可用的池。
 
->![image error](https://www.markdown.xyz/assets/images/san-juan-mountains.jpg)
+>![image error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/22.png?raw=true)
 
 这样，你可以看起来在屏幕外发射数百发子弹，实际上，你只是禁用并回收它们。只需确保你的池大小足够大，以显示同时活动的对象。
 
@@ -1068,7 +1093,7 @@ public class PooledObject : MonoBehaviour
 + 使其静态或单例：如果你需要从各种源生成池对象，考虑使对象池静态化。这使得它可以在你的应用程序的任何地方访问，但阻止了使用检查器的使用。或者，将对象池模式与单例模式结合使用，使其全局可访问，便于使用。
 + 使用字典管理多个池：如果你有多个你想要池化的Prefabs，将它们存储在单独的池中，并存储一个键值对，以便你知道哪个池要查询（Prefab的[InstanceID](https://docs.unity3d.com/ScriptReference/Object.GetInstanceID.html)可以作为唯一的键）。
 + 创造性地移除未使用的GameObject：有效地使用对象池的一部分是隐藏未使用的对象并将它们返回到池。利用每一个机会停用一个池对象（例如，屏幕外，被爆炸隐藏，等等）
-+ —Check for errors: Avoid releasing an object that is already in the pool .Otherwise, it might result in an error at runtime .
++ 检查错误：避免释放已经在池中的对象。否则，这可能会在运行时导致错误。
 
 + 添加最大大小/上限：大量的池对象会消耗内存。你可能需要移除超过某个限制的对象，以便池不会使用过多的资源。
 
@@ -1186,7 +1211,8 @@ UnityEngine.Pool API使设置对象池更快,现在您不必从头重新构建�
 
 如果你需要有一个确切的对象来协调整个场景的行动，这就很有用。例如，你可能希望在你的场景中有一个精确的游戏管理器来指导主游戏循环。你也可能只想有一个文件管理器一次写入你的文件系统。这样的中心，管理级别的对象往往是单例模式的好候选对象。
 
-【图片】
+![connect error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/23.png?raw=true)
+
 
 在《游戏编程模式》中，它说单例模式带来的坏处多于好处，并将其列为反模式。这个糟糕的声誉是因为该模式的使用容易导致滥用。开发人员倾向于在不适当的情况下应用单例模式，引入不必要的全局状态或依赖性。
 
@@ -1226,9 +1252,11 @@ public class SimpleSingleton : MonoBehaviour
 
 在 Awake 方法中，检查它是否已经设置。如果 Instance 当前为 null，那么 Instance 被设置为这个特定的对象。这必须是场景中的第一个单例。
 
+否则，这个实例必定是一个重复项；你需要调用 Destroy(gameObject) 来确保你的单例在场景中只有一个这样的组件。
+
 如果你在运行时的层次结构中将脚本附加到多个 GameObject 上，Awake 中的逻辑将保留第一个对象，然后丢弃其余的。
 
-【图片】
+![connect error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/24.png?raw=true)
 
 Instance 字段是公开的和静态的。任何组件都可以从场景中的任何地方全局访问唯一的单例。
 
@@ -1429,7 +1457,7 @@ public class GameManager: Singleton<GameManager>
 
 与直接调用方法不同，命令模式允许你将一个或多个方法调用封装为一个“命令对象”。
 
-【图片】使用命令模式存储操作
+![connect error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/25.png?raw=true)使用命令模式存储操作
 
 将这些命令对象存储在队列或堆栈等集合中，可以让你控制它们的执行时机。这可以作为一个小缓冲区。然后，你可能可以延迟一系列的操作以便稍后回放，或者撤销它们。
 
@@ -1505,7 +1533,7 @@ public class PlayerMover : MonoBehaviour
 
 你将向 Move 方法中传入一个 Vector3，以引导玩家沿着四个罗盘方向移动。你还可以使用射线投射来检测适当 LayerMask 中的墙壁。当然，你想要应用到命令模式的实现与模式本身是分开的。
 
-【图片】样本中的玩家移动
+![connect error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/26.png?raw=true)样本中的玩家移动
 
 要遵循命令模式，捕获 PlayerMover 的 Move 方法作为一个对象。不要直接调用 Move，而是创建一个新的类，MoveCommand，实现 ICommand 接口：
 
@@ -1542,7 +1570,7 @@ MoveCommand 存储它需要执行的任何参数。通过构造函数进行设�
 
 一旦你创建了命令对象并保存了所需的参数，就使用 CommandInvoker 的静态 ExecuteCommand 和 UndoCommand 方法传入你的 MoveCommand。这将运行 MoveCommand 的 Execute 或 Undo，并在撤销堆栈中跟踪命令对象。
 
-【图片】CommandInvoker、ICommand 和 MoveCommand
+![connect error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/27.png?raw=true)
 
 InputManager不直接调用PlayerMover的Move方法。相反，添加一个额外的方法RunMoveCommand，以创建一个新的MoveCommand并将其发送到CommandInvoker。
 
@@ -1585,11 +1613,11 @@ private void RunPlayerCommand(PlayerMover playerMover, Vector3 movement)
 + 创建更多的命令：示例项目只包含一种类型的命令对象，即MoveCommand。您可以创建任意数量的实现ICommand的命令对象，并使用CommandInvoker跟踪它们。
 + 添加重做功能只是添加另一个堆栈的问题：当您撤消一个命令对象时，将其推到跟踪重做操作的单独堆栈上。这样，您可以快速循环浏览撤消历史记录或重做这些操作。当用户调用一个全新的移动时，清除重做堆栈（您可以在附带的示例项目中找到一个实现）。
 
-【】撤销和重做堆栈
+![connect error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/28.png?raw=true)
 
 + 为您的命令对象缓冲区使用不同的集合：如果您想要先进先出（FIFO）的行为，队列可能更方便。如果您使用列表，跟踪当前活动的索引；活动索引之前的命令是可以撤销的。索引之后的命令是可以重做的。
 
-【】列表或其他集合充当命令缓冲区。
+![connect error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/29.png?raw=true)列表或其他集合充当命令缓冲区。
 
 + 限制堆栈的大小：撤销和重做操作可能会迅速失控。将堆栈限制为最后一些命令。
 + 将任何必要的参数传递给构造函数：这有助于封装MoveCommand示例中看到的逻辑。
@@ -1609,7 +1637,7 @@ CommandInvoker与其他外部对象一样，不看到命令对象的内部工作
 
 游戏是互动的，它们迫使我们跟踪许多在运行时改变的系统。如果你绘制一个表示角色不同状态的图表，你可能会得到这样的东西：
 
-【】一个简单的状态图
+![connect error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/30.png?raw=true)一个简单的状态图
 
 它类似于一个流程图，但有一些不同：
 
@@ -1688,7 +1716,7 @@ public class UnrefactoredPlayerController : MonoBehaviour
 
 想象每个状态的结构如下：
 
-【】带有入口、出口和更新的封装状态
+![connect error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/31.png?raw=true)带有入口、出口和更新的封装状态
 
 这里你进入状态并循环每一帧，直到一个条件导致控制流退出。为了实现这个模式，创建一个接口，IState:
 
@@ -1818,7 +1846,7 @@ public class IdleState : IState
 
 另一方面，如果你只有几个状态要跟踪，额外的结构可能是过度的。这种模式可能只有在你预期你的状态增长到一定的复杂度时才有意义。
 
-【】状态模式示例
+![connect error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/32.png?raw=true)状态模式示例
 
 ###  8.4. <a name='-1'></a>改进
 <br>
@@ -1828,14 +1856,14 @@ public class IdleState : IState
 + 结合状态模式和动画：状态模式的一个常见应用是动画。玩家或敌人角色在宏观层面上经常被表示为基元（一个胶囊）。然后，你可以有动画几何体反应于内部状态的变化，所以游戏角色可以看起来像是在跑步、跳跃、游泳、攀爬等。
 如果你已经使用过Unity的Animator窗口，你会注意到它的工作流与状态模式很好地匹配。每个动画片段占据一个状态，每次只有一个状态是活动的。
 
-【】Animator状态图的一个示例：与StateMachine的结构进行比较。
+![connect error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/33.png?raw=true)Animator状态图的一个示例：与StateMachine的结构进行比较。
 
 + 添加事件：为了将状态变化通知到外部对象，你可能想要添加事件（参见观察者模式）。在进入或退出一个状态时有一个事件可以通知相关的监听器，并让它们在运行时响应。
 + 添加层次结构：当你开始用状态模式描述更复杂的实体时，你可能想要实现分层的状态机。一些状态不可避免地会相似；例如，如果玩家或游戏角色在地面上，无论处于WalkingState还是RunningState，都可以蹲下或跳跃。
 如果你实现一个SuperState，你可以将公共行为放在一起。然后使用继承，你可以在子状态中重写任何特定的内容。例如，你可能首先声明一个GroundedState。然后你可以从那里继承RunningState或WalkingState。
 + 实现简单的AI：有限状态机在生成基本的敌人AI中也很有用。基于FSM构建NPC大脑的方法可能是这样的：
 
-【】基于状态模式的简单AI
+![connect error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/34.png?raw=true)基于状态模式的简单AI
 
 这里再次展示了状态模式在完全不同的上下文中的工作原理。每个状态代表一个动作，如攻击、逃跑或巡逻。每次只有一个状态是活动的，每个状态决定其转换到下一个状态。
 
@@ -1848,7 +1876,7 @@ public class IdleState : IState
 
 观察者模式是这种问题的一个常见解决方案。它允许你的对象进行通信，但使用“一对多”的依赖关系保持松散耦合。当一个对象更改状态时，所有依赖对象都会自动得到通知。这类似于一个广播塔广播给许多不同的听众。
 
-【】观察者模式就像一个广播塔。主体向观察者广播。
+![connect error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/35.png?raw=true)观察者模式就像一个广播塔。主体向观察者广播。
 
 进行广播的对象被称为主体。正在监听的其他对象被称为观察者。
 
@@ -1868,7 +1896,7 @@ public class IdleState : IState
 
 通过这种方式，你可以使许多组件对主体的单一事件做出反应。如果主体表示一个按钮被点击，观察者可以播放一个动画或声音、触发一个过场动画或保存一个文件。它们的反应可以是任何事情，这就是为什么你经常会发现观察者模式被用来在对象之间发送消息。
 
-【】主体引发事件通知观察者。
+![connect error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/36.png?raw=true)主体引发事件通知观察者。
 
 ###  9.2. <a name='-1'></a>示例：简单的主体和观察者
 <br>
@@ -1951,7 +1979,7 @@ OnThingHappened方法可以包含观察者在响应事件时执行的任何逻�
 
 主体只需要在适当的时候触发一个事件，然后任意数量的观察者都可以订阅。
 
-【】观察者样本场景
+![connect error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/37.png?raw=true)观察者样本场景
 
 在示例项目中，ButtonSubject允许用户使用鼠标按钮调用Clicked事件。其他带有AudioObserver和ParticleSystemObserver组件的GameObject然后可以以它们自己的方式响应事件。
 
@@ -1967,7 +1995,7 @@ OnThingHappened方法可以包含观察者在响应事件时执行的任何逻�
 >
 >UnityEvents为观察者模式提供了一个图形界面。如果你已经使用过Unity的UI系统（例如，创建一个UI按钮的OnClick事件），那么你已经有了一些经验。
 >
->【】UnityEvents有图形组件供您设置
+>![connect error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/38.png?raw=true)UnityEvents有图形组件供您设置
 >
 >在这个例子中，按钮的OnClick事件调用并触发了两个AudioObservers的OnThingHappened方法的响应。因此，你可以在没有代码的情况下设置主体的事件。
 >
@@ -2027,7 +2055,7 @@ MVC的基本思想是将您的软件的逻辑部分与数据和展示部分分�
 + **视图 是界面：** 视图格式化并在屏幕上呈现您的数据的图形表示。
 + **控制器 处理逻辑：** 可以将其视为大脑。它处理游戏数据，并计算运行时的值如何变化。
 
-【】模型、视图和控制器
+![connect error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/39.png?raw=true)模型、视图和控制器
 
 这种关注点分离也明确定义了这三个部分如何相互交互。模型管理应用程序数据，而视图将数据显示给用户。控制器处理输入并对游戏数据进行任何决策或计算。然后它将结果发送回模型。
 
@@ -2044,7 +2072,7 @@ MVC的基本思想是将您的软件的逻辑部分与数据和展示部分分�
 
 虽然这是一个有效的方法，但许多Unity开发者选择使用一个MVC的变体，其中控制器充当中介。在这里，视图不直接观察模型。相反，它这样做：
 
-【】MVP：MVC的一个变种
+![connect error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/40.png?raw=true)MVP：MVC的一个变种
 
 这种MVC的变种被称为模型视图展示设计，或MVP。MVP仍然保留了使用三个明确的应用层分离关注点的特点。但是，它稍微改变了每个部分的职责。
 
@@ -2169,7 +2197,7 @@ public class HealthPresenter : MonoBehaviour
 ```
 其他GameObject将需要使用HealthPresenter来修改健康值，使用Damage、Heal和Reset。HealthPresenter通常会等待使用UpdateView更新用户界面，直到Health引发其HealthChanged事件。这在设置模型中的值需要一段时间（例如，将值保存到磁盘或存储在数据库中）时很有用。
 
-【】使用MVP的示例健康界面
+![connect error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/41.png?raw=true)使用MVP的示例健康界面
 
 在示例项目中，用户可以点击来损坏目标对象或使用按钮重置健康。这些通知HealthPresenter（调用Damage或Reset），而不是直接更改Health。当Health引发事件并通知HealthPresenter其值已更改时，UI文本和UI滑块更新。
 
