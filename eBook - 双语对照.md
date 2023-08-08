@@ -105,12 +105,13 @@ This guide was written by Wilmer Lin, a 3D and visual effects artist with over 1
 >如果你不确定某个模式是否适用于你的特定问题，你可能最好等待一个情况，让它感觉更自然地适合。不要因为一个模式对你来说是新的或者是新颖的就使用它；只有在你需要的时候才使用它。  
 > 
 >Then, the design pattern will serve its intended purpose: to help you develop better software .   
- >然后，设计模式将发挥其预期的目的：帮助你开发更好的软件。  
+>然后，设计模式将发挥其预期的目的：帮助你开发更好的软件。  
 >
 >Let’s get started .  
 >让我们开始吧。
-  
+
   <br>  
+  
   Before charging into the patterns themselves, let’s look at some design principles that influence how they work .  
 
  在深入设计模式本身之前，让我们看一下一些影响它们工作方式的设计原则.   
@@ -2817,51 +2818,7 @@ MVP (and MVC) really shine for larger applications . If your game requires a siz
 
 MVP（和MVC）真正为较大的应用程序发光。如果您的游戏需要一个大小适中的团队来开发，并且您希望在启动后长时间维护它，您可能会从以下方面受益：
 
-+ **平滑的工作分割：** 因为您已经将视图从展示器中分离出来，所以可以几乎独立地开发和更新您的用户界面- [Level Up Your Code With Game Progamming SimplifiedChinesePatterns-Sim](#level-up-your-code-with-game-progamming-simplifiedchinesepatterns-sim)
-  - [介绍设计模式](#介绍设计模式)
-    - [开闭原则](#开闭原则)
-    - [里氏替换原则 Liskov substitution principle](#里氏替换原则-liskov-substitution-principle)
-    - [Interface segregation principle 接口隔离原则](#interface-segregation-principle-接口隔离原则)
-    - [Dependency inversion principle 依赖反转原则](#dependency-inversion-principle-依赖反转原则)
-    - [A SOLID understanding SOLID理解](#a-solid-understanding-solid理解)
-  - [为游戏开发设计模式 DESIGN PATTERNS FOR GAME DEVELOPMENT](#为游戏开发设计模式-design-patterns-for-game-development)
-    - [The Gang of Four 四人帮](#the-gang-of-four-四人帮)
-    - [Learning design patterns 学习设计模式](#learning-design-patterns-学习设计模式)
-  - [FACTORY PATTERN](#factory-pattern)
-    - [Example: A simple factory 示例：一个简单的工厂](#example-a-simple-factory-示例一个简单的工厂)
-    - [Pros and cons 优点和缺点](#pros-and-cons-优点和缺点)
-    - [Improvements 改进](#improvements-改进)
-  - [5. OBJECT POOL](#5-object-pool)
-    - [Example: Simple pool system 示例：简单的池系统](#example-simple-pool-system-示例简单的池系统)
-    - [Improvements 改进](#improvements-改进-1)
-    - [UnityEngine.Pool](#unityenginepool)
-  - [SINGLETON PATTERN](#singleton-pattern)
-    - [Example: Simple singleton 示例：简单的单例](#example-simple-singleton-示例简单的单例)
-    - [Persistence and lazy instantiation 持久性和延迟实例化](#persistence-and-lazy-instantiation-持久性和延迟实例化)
-    - [Using generics 使用泛型](#using-generics-使用泛型)
-    - [优点和缺点](#优点和缺点)
-  - [COMMAND PATTERN](#command-pattern)
-    - [The command object and command invoker 命令对象和命令调用者](#the-command-object-and-command-invoker-命令对象和命令调用者)
-    - [示例：可撤销的移动 Example: Undoable movement](#示例可撤销的移动-example-undoable-movement)
-    - [Pros and cons 优点和缺点：](#pros-and-cons-优点和缺点-1)
-    - [Improvements 改进](#improvements-改进-2)
-  - [STATE PATTERN](#state-pattern)
-    - [状态和状态机 States and state machines](#状态和状态机-states-and-state-machines)
-    - [示例：简单的状态模式 Example: Simple state pattern](#示例简单的状态模式-example-simple-state-pattern)
-    - [优缺点 Pros and cons](#优缺点-pros-and-cons)
-    - [改进 Improvements](#改进-improvements)
-  - [OBSERVER PATTERN](#observer-pattern)
-    - [事件 Events](#事件-events)
-    - [简单的主体和观察者 Example: Simple subject and observer](#简单的主体和观察者-example-simple-subject-and-observer)
-    - [优缺点 Pros and cons](#优缺点-pros-and-cons-1)
-    - [改进 Improvements](#改进-improvements-1)
-  - [MODEL VIEW PRESENTER(MVP)](#model-view-presentermvp)
-    - [MVC设计模式 Model View Controller (MVC) design pattern](#mvc设计模式-model-view-controller-mvc-design-pattern)
-    - [Model View Presenter （MVP）和Unity](#model-view-presenter-mvp和unity)
-    - [示例：健康界面 Example: Health interface](#示例健康界面-example-health-interface)
-    - [优缺点 Pros and cons](#优缺点-pros-and-cons-2)
-  - [结论](#结论)
-  - [其他设计模式 Other design patterns](#其他设计模式-other-design-patterns)
++ **平滑的工作分割：** 因为您已经将视图从展示器中分离出来，所以可以几乎独立地开发和更新您的用户界面- [Level Up Your Code With Game Progamming SimplifiedChinesePatterns-Sim]
 。这样，您可以在专业的开发者之间划分您的劳动。您的团队中有专家前端开发者吗？让他们负责视图。他们可以独立于其他人工作。Smooth division of work: Because you’ve separated the View from the Presenter, developing and updating your user interface can happen nearly independently from the rest of the codebase .   This lets you divide your labor between specialized developers . Do you have expert front-end developers on your team? Let them take care of the View . They can work independently from everyone else . 
 
 
