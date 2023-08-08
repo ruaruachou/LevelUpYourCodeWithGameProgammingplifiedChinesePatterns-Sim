@@ -1,60 +1,57 @@
-<!-- vscode-markdown-toc -->
-* 1. [介绍设计模式](#)
-* 2. [SOLID原则](#SOLID)
-	* 2.1. [单一职责原则](#-1)
-	* 2.2. [开闭原则](#-1)
-	* 2.3. [里氏替换原则](#-1)
-	* 2.4. [接口隔离原则](#-1)
-	* 2.5. [依赖反转原则](#-1)
-	* 2.6. [SOLID理解](#SOLID-1)
-* 3. [为游戏开发设计模式](#-1)
-	* 3.1. [四人帮](#-1)
-	* 3.2. [学习设计模式](#-1)
-* 4. [FACTORY PATTERN](#FACTORYPATTERN)
-	* 4.1. [示例：一个简单的工厂](#-1)
-	* 4.2. [优点和缺点](#-1)
-	* 4.3. [改进](#-1)
-* 5. [OBJECT POOL](#OBJECTPOOL)
-	* 5.1. [示例：简单的池系统](#-1)
-	* 5.2. [改进](#-1)
-	* 5.3. [UnityEngine.Pool](#UnityEngine.Pool)
-* 6. [SINGLETON PATTERN](#SINGLETONPATTERN)
-	* 6.1. [示例：简单的单例](#-1)
-	* 6.2. [持久性和延迟实例化](#-1)
-	* 6.3. [使用泛型](#-1)
-	* 6.4. [优点和缺点](#-1)
-* 7. [COMMAND PATTERN](#COMMANDPATTERN)
-	* 7.1. [命令对象和命令调用者](#-1)
-	* 7.2. [示例：可撤销的移动](#-1)
-	* 7.3. [优点和缺点：](#-1)
-	* 7.4. [改进](#-1)
-* 8. [STATE PATTERN](#STATEPATTERN)
-	* 8.1. [状态和状态机](#-1)
-	* 8.2. [示例：简单的状态模式](#-1)
-	* 8.3. [优缺点](#-1)
-	* 8.4. [改进](#-1)
-* 9. [OBSERVER PATTERN](#OBSERVERPATTERN)
-	* 9.1. [事件](#-1)
-	* 9.2. [示例：简单的主体和观察者](#-1)
-	* 9.3. [优缺点](#-1)
-	* 9.4. [改进](#-1)
-* 10. [MODEL VIEW PRESENTER(MVP)](#MODELVIEWPRESENTERMVP)
-	* 10.1. [MVC设计模式](#MVC)
-	* 10.2. [Model View Presenter （MVP）和Unity](#ModelViewPresenterMVPUnity)
-	* 10.3. [示例：健康界面](#-1)
-	* 10.4. [优缺点](#-1)
-* 11. [结论](#-1)
-* 12. [其他设计模式](#-1)
-
-<!-- vscode-markdown-toc-config
-	numbering=true
-	autoSave=true
-	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc --># Level Up Your Code With Game Progamming SimplifiedChinesePatterns-Sim
 
 
+# Level Up Your Code With Game Progamming Simplified-Chinese
 
-##  1. <a name=''></a>介绍设计模式
+- [Level Up Your Code With Game Progamming Simplified-Chinese](#level-up-your-code-with-game-progamming-simplified-chinese)
+  - [介绍设计模式](#介绍设计模式)
+  - [SOLID原则](#solid原则)
+    - [单一职责原则](#单一职责原则)
+    - [开闭原则](#开闭原则)
+    - [里氏替换原则](#里氏替换原则)
+    - [接口隔离原则](#接口隔离原则)
+    - [依赖反转原则](#依赖反转原则)
+    - [SOLID理解](#solid理解)
+  - [为游戏开发设计模式](#为游戏开发设计模式)
+    - [\<四人帮](#四人帮)
+    - [学习设计模式](#学习设计模式)
+  - [FACTORY PATTERN](#factory-pattern)
+    - [示例：一个简单的工厂](#示例一个简单的工厂)
+    - [优点和缺点](#优点和缺点)
+    - [改进](#改进)
+  - [OBJECT POOL](#object-pool)
+    - [示例：简单的池系统](#示例简单的池系统)
+    - [改进](#改进-1)
+    - [UnityEngine.Pool](#unityenginepool)
+  - [SINGLETON PATTERN](#singleton-pattern)
+    - [示例：简单的单例](#示例简单的单例)
+    - [持久性和延迟实例化](#持久性和延迟实例化)
+    - [使用泛型](#使用泛型)
+    - [优点和缺点](#优点和缺点-1)
+  - [COMMAND PATTERN](#command-pattern)
+    - [命令对象和命令调用者](#命令对象和命令调用者)
+    - [示例：可撤销的移动](#示例可撤销的移动)
+    - [优点和缺点：](#优点和缺点-2)
+    - [改进](#改进-2)
+  - [STATE PATTERN](#state-pattern)
+    - [状态和状态机](#状态和状态机)
+    - [示例：简单的状态模式](#示例简单的状态模式)
+    - [优缺点](#优缺点)
+    - [改进](#改进-3)
+  - [OBSERVER PATTERN](#observer-pattern)
+    - [事件](#事件)
+    - [示例：简单的主体和观察者](#示例简单的主体和观察者)
+    - [优缺点](#优缺点-1)
+    - [改进](#改进-4)
+  - [MODEL VIEW PRESENTER(MVP)](#model-view-presentermvp)
+    - [MVC设计模式](#mvc设计模式)
+    - [Model View Presenter （MVP）和Unity](#model-view-presenter-mvp和unity)
+    - [示例：健康界面](#示例健康界面)
+    - [优缺点](#优缺点-2)
+  - [结论](#结论)
+  - [其他设计模式](#其他设计模式)
+
+
+##  介绍设计模式
 当在Unity中工作时，你不需要重新发明轮子。很可能有人已经为你发明了一个。
 
 对于你遇到的每一个软件设计问题，都有成千上万的开发者在你之前遇到过。虽然你不能总是直接向他们寻求建议，但你可以通过设计模式来学习他们的决策。
@@ -87,7 +84,7 @@
 >
 >让我们开始吧。
 
-##  2. <a name='SOLID'></a>SOLID原则
+## SOLID原则
 
 在深入设计模式本身之前，让我们看一下一些影响它们工作方式的设计原则。  
 SOLID是五个软件设计的核心基础的助记符：  
@@ -101,7 +98,7 @@ SOLID是五个软件设计的核心基础的助记符：
 
 <br>
 
-###  2.1. <a name='-1'></a>单一职责原则
+###  单一职责原则
 <br>
 
 一个类应该只有一个变化的理由，也就是其单一的职责。
@@ -210,8 +207,9 @@ Player脚本仍然可以管理其他的脚本组件，但每个类只做一件�
 
 <br> 
 
-###  2.2. <a name='-1'></a>开闭原则
+###  开闭原则
 <br>
+
 在SOLID设计中的开闭原则（OCP）规定类必须对扩展开放，但对修改封闭。组织你的类，使得你可以在不修改原始代码的情况下创建新的行为。
 
 这方面的经典例子是计算形状的面积。你可以创建一个名为AreaCalculator的类，其中包含返回矩形和圆形面积的方法。为了计算面积，Rectangle类有Width和Height。
@@ -303,7 +301,7 @@ public class AreaCalculator
 在Unity中创建新的类时，利用接口和抽象。这有助于避免在你的逻辑中出现难以后期扩展的繁琐的switch或if语句。一旦你习惯了设置你的类来尊重OCP，长期添加新的代码变得更简单。  
 <br>  
 
-###  2.3. <a name='-1'></a>里氏替换原则
+###  里氏替换原则
 <br>
 
 里氏替换原则（LSP）规定，派生类必须能够替换它们的基类。面向对象编程中的继承允许你通过子类增加功能。然而，如果你不小心，这可能导致不必要的复杂性。
@@ -463,7 +461,7 @@ public class Train : RailVehicle
 遵循里氏替换原则，限制你如何使用继承，保持你的代码库可扩展和灵活。  
 <br>
 
-###  2.4. <a name='-1'></a>接口隔离原则
+###  接口隔离原则
 <br>
 
 接口隔离原则（ISP）规定，没有客户应该被迫依赖于它不使用的方法。
@@ -559,7 +557,7 @@ public class EnemyUnit : MonoBehaviour, IDamageable, IMovable, IUnit-Stats
 
 <br>  
 
-###  2.5. <a name='-1'></a>依赖反转原则
+###  依赖反转原则
 <br>
 
 依赖反转原则（DIP）规定，高级模块不应直接从低级模块导入任何东西。两者都应依赖于抽象。
@@ -741,7 +739,7 @@ public class Door : MonoBehaviour, ISwitchable
 
 <br>
 
-###  2.6. <a name='SOLID-1'></a>SOLID理解
+###  SOLID理解
 <br>
 
 了解SOLID原则是日常练习的问题。将它们视为编码时始终要记住的五个基本规则。这是一个方便的回顾：
@@ -764,7 +762,7 @@ SOLID原则是帮助你编写更清晰代码的指导方针，这样它更容易
 
 <br>
 
-##  3. <a name='-1'></a>为游戏开发设计模式
+##  为游戏开发设计模式
 <br>
 
 一旦你理解了SOLID原则，你就会想要深入研究设计模式。
@@ -777,7 +775,7 @@ SOLID原则是帮助你编写更清晰代码的指导方针，这样它更容易
   
  <br>
 
-###  3.1. <a name='-1'></a>四人帮
+###  <四人帮
 <br>
 
 今天的许多软件设计模式都源自开创性的作品，Erich Gamma、Richard Helm、Ralph Johnson和John Vlissides的《设计模式：可复用面向对象软件的元素》。这本书描述了在各种日常应用中识别的23种模式。
@@ -788,7 +786,7 @@ SOLID原则是帮助你编写更清晰代码的指导方针，这样它更容易
   
   <br>
 
-###  3.2. <a name='-1'></a>学习设计模式
+###  学习设计模式
 <br>
 
 虽然你可以在没有研究设计模式的情况下作为一个游戏程序员工作，但学习它们只会帮助你成为更好的开发者。毕竟，设计模式被标记为这样，因为它们是众所周知的问题的常见解决方案。
@@ -829,7 +827,7 @@ Unity的[Prefab](https://docs.unity3d.com/Manual/Prefabs.html)系统实现了Gam
 <br>
 <br>
 
-##  4. <a name='FACTORYPATTERN'></a>FACTORY PATTERN
+##  FACTORY PATTERN
 
 <br>
 
@@ -843,7 +841,7 @@ Unity的[Prefab](https://docs.unity3d.com/Manual/Prefabs.html)系统实现了Gam
 
 你还可以对工厂进行子类化，制作多个专门用于特定产品的工厂。这样做有助于在运行时生成敌人、障碍物或其他任何事物。
 
-###  4.1. <a name='-1'></a>示例：一个简单的工厂
+###  示例：一个简单的工厂
 
 
 假设你想要创建一个工厂模式来实例化游戏级别的项目。你可以使用Prefab来创建GameObject，但是你可能也想在创建每个实例时运行一些自定义行为。
@@ -930,7 +928,7 @@ public class ConcreteFactoryA : Factory
 
 探索示例项目，看看ClickToCreate组件如何切换工厂来创建ProductA和ProductB，它们有不同的行为。ProductB在生成时播放一个声音，而ProductA则启动一个粒子效果。  
 
-###  4.2. <a name='-1'></a>优点和缺点
+###  优点和缺点
 
 <br>
 
@@ -946,7 +944,7 @@ public class ConcreteFactoryA : Factory
 <br>  
 <br>
 
-###  4.3. <a name='-1'></a>改进
+###  改进
 <br>
 
 工厂的实现方式可以从这里显示的内容大相径庭。在构建你自己的工厂模式时，考虑以下调整：
@@ -961,7 +959,7 @@ public class ConcreteFactoryA : Factory
 
 <br>
 
-##  5. <a name='OBJECTPOOL'></a>OBJECT POOL  
+##  OBJECT POOL  
 <br>
 对象池是一种优化技术，用于在创建和销毁大量GameObject时减轻CPU的负担。
 
@@ -973,7 +971,7 @@ public class ConcreteFactoryA : Factory
 
 >![image error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/21.png?raw=true)
 
-###  5.1. <a name='-1'></a>示例：简单的池系统
+###  示例：简单的池系统
 <br>
 
 考虑一个简单的池系统，定义了两个MonoBehaviours：
@@ -1085,7 +1083,7 @@ public class PooledObject : MonoBehaviour
 
 <br>
 
-###  5.2. <a name='-1'></a>改进
+###  改进
 
 
 以上的示例是一个简单的例子。当为实际项目部署对象池时，考虑以下升级：
@@ -1106,7 +1104,7 @@ public class PooledObject : MonoBehaviour
 
 <br>
 
-###  5.3. <a name='UnityEngine.Pool'></a>UnityEngine.Pool
+###  UnityEngine.Pool
 <br>
 
 对象池模式在Unity 2021中现在支持自己的[UnityEngine.Pool API](https://docs.unity3d.com/2021.1/Documentation/ScriptReference/Pool.ObjectPool_1.html)。这为您提供了一个基于堆栈的ObjectPool来跟踪您的对象池模式对象。根据您的需要,您也可以使用CollectionPool(List、HashSet、Dictionary等)。  
@@ -1199,7 +1197,8 @@ public class RevisedProjectile : MonoBehaviour
 UnityEngine.Pool API使设置对象池更快,现在您不必从头重新构建该模式。这是一个轮子不必重新发明。
 
 <br>
-##  6. <a name='SINGLETONPATTERN'></a>SINGLETON PATTERN
+
+##  SINGLETON PATTERN
 <br>
 
 单例模式经常受到批评。如果你是 Unity 开发的新手，单例可能是你在实际编程中遇到的第一个可以识别的模式。但它也是最容易被批评的设计模式之一。
@@ -1220,7 +1219,7 @@ UnityEngine.Pool API使设置对象池更快,现在您不必从头重新构建�
 
 <br>  
 
-###  6.1. <a name='-1'></a>示例：简单的单例
+###  示例：简单的单例
 <br>
 
 
@@ -1260,7 +1259,7 @@ public class SimpleSingleton : MonoBehaviour
 
 Instance 字段是公开的和静态的。任何组件都可以从场景中的任何地方全局访问唯一的单例。
 
-###  6.2. <a name='-1'></a>持久性和延迟实例化
+###  持久性和延迟实例化
 
 
 SimpleSingleton 按原样工作。然而，它确实有两个问题：
@@ -1327,7 +1326,7 @@ DontDestroyOnLoad(gameObject) 阻止场景加载从层次结构中清除单例�
 <br>
 
 
-###  6.3. <a name='-1'></a>使用泛型
+###  使用泛型
 
 
 以上版本的脚本都没有解决如何在同一场景中创建不同的单例。例如，如果你想要一个表现为 AudioManager 的单例和另一个作为 GameManager 的单例，它们现在无法共存。你需要复制相关的代码并将逻辑粘贴到每个类中。
@@ -1424,7 +1423,7 @@ public class GameManager: Singleton<GameManager>
 
 <br>
 
-###  6.4. <a name='-1'></a>优点和缺点  
+###  优点和缺点  
 <br>
 
 单例模式与本指南中的其他模式不同，因为它们在多个方面都违反了 SOLID 原则。许多开发人员出于各种原因不喜欢它们：
@@ -1449,7 +1448,7 @@ public class GameManager: Singleton<GameManager>
 
 <br>
 
-##  7. <a name='COMMANDPATTERN'></a>COMMAND PATTERN
+##  COMMAND PATTERN
 
 <br>
 
@@ -1466,9 +1465,10 @@ public class GameManager: Singleton<GameManager>
 
 <br>  
 
-###  7.1. <a name='-1'></a>命令对象和命令调用者
+###  命令对象和命令调用者
 
 <br>
+
 有许多实现方法，但这里有一个使用接口的版本：
 
 ```
@@ -1507,7 +1507,7 @@ public class CommandInvoker
 
 ```
 
-###  7.2. <a name='-1'></a>示例：可撤销的移动
+###  示例：可撤销的移动
 <br>
 
 假设你想要在迷宫中移动你的角色。你可以创建一个 PlayerMover 来负责改变玩家的位置：
@@ -1594,7 +1594,7 @@ private void RunPlayerCommand(PlayerMover playerMover, Vector3 movement)
 
 查看示例项目以获取InputManager的实现细节，或使用键盘或游戏手柄设置您自己的输入。您的玩家现在可以导航迷宫。点击Undo按钮，您可以回退到起始方块。
 
-###  7.3. <a name='-1'></a>优点和缺点：
+###  优点和缺点：
 <br>
 
 实现可重播性或可撤销性就像生成命令对象的集合一样简单。您还可以使用命令缓冲区按照特定的控制顺序回放操作。
@@ -1603,7 +1603,7 @@ private void RunPlayerCommand(PlayerMover playerMover, Vector3 movement)
 
 另一方面，命令模式引入了更多的结构，就像其他设计模式一样。您必须决定这些额外的类和接口是否为在应用程序中部署命令对象提供了足够的好处。
 
-###  7.4. <a name='-1'></a>改进
+###  改进
 <br>
 
 一旦您掌握了基础知识，您就可以根据上下文影响命令的时序，并按顺序或反向播放它们。
@@ -1625,13 +1625,13 @@ CommandInvoker与其他外部对象一样，不看到命令对象的内部工作
 
 <br>  
 
-##  8. <a name='STATEPATTERN'></a>STATE PATTERN
+##  STATE PATTERN
 
 <br>
 
 想象你正在构建一个可玩的角色。在某一时刻，角色可能站在地面上。移动控制器，它看起来像是在跑或走路。按跳跃按钮，角色跳入空中。几帧后，它降落并重新进入其空闲、站立的位置。
 
-###  8.1. <a name='-1'></a>状态和状态机
+###  状态和状态机
 
 <br>
 
@@ -1703,7 +1703,7 @@ public class UnrefactoredPlayerController : MonoBehaviour
 ```
 这样做是可行的，但PlayerController脚本很快就会变得混乱。增加更多的状态和复杂性每次都需要我们重新查看PlayerController脚本的内部。
 
-###  8.2. <a name='-1'></a>示例：简单的状态模式
+###  示例：简单的状态模式
 
 <br>
 
@@ -1838,7 +1838,7 @@ public class IdleState : IState
 
 也请查看WalkState和JumpState的示例项目实现。与其拥有一个切换行为的大型类，不如让每个状态都有自己的更新逻辑。这样，状态可以彼此独立地工作。
 
-###  8.3. <a name='-1'></a>优缺点
+###  优缺点
 
 <br>
 
@@ -1848,7 +1848,7 @@ public class IdleState : IState
 
 ![connect error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/32.png?raw=true)状态模式示例
 
-###  8.4. <a name='-1'></a>改进
+###  改进
 <br>
 
 示例项目中的胶囊会改变颜色，UI会随着玩家的内部状态更新。在真实世界的例子中，你可能有更复杂的效果伴随状态的变化：
@@ -1868,7 +1868,8 @@ public class IdleState : IState
 这里再次展示了状态模式在完全不同的上下文中的工作原理。每个状态代表一个动作，如攻击、逃跑或巡逻。每次只有一个状态是活动的，每个状态决定其转换到下一个状态。
 
 <br>
-##  9. <a name='OBSERVERPATTERN'></a>OBSERVER PATTERN
+
+##  OBSERVER PATTERN
 
 <br>
 
@@ -1882,7 +1883,7 @@ public class IdleState : IState
 
 这种模式松散地解耦了主体，它实际上不真正知道观察者或关心它们在接收到信号后做什么。虽然观察者对主体有依赖，但观察者本身不知道彼此。
 
-###  9.1. <a name='-1'></a>事件
+###  事件
 <br>
 
 观察者模式如此普遍，以至于它被内置到C#语言中。你可以设计自己的主题-观察者类，但通常是不必要的。还记得关于重复发明轮子的观点吗？C#已经使用事件实现了该模式。
@@ -1898,7 +1899,7 @@ public class IdleState : IState
 
 ![connect error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/36.png?raw=true)主体引发事件通知观察者。
 
-###  9.2. <a name='-1'></a>示例：简单的主体和观察者
+###  示例：简单的主体和观察者
 <br>
 
 例如，您可以定义一个基本的主题/发布者，如下所示：
@@ -2003,7 +2004,7 @@ OnThingHappened方法可以包含观察者在响应事件时执行的任何逻�
 >
 >在考虑使用UnityEvents和UnityActions时，权衡性能与使用方法。查看Unity Learn上的[Create a Simple Messaging System with Events](https://learn.unity.com/tutorial/create-a-simple-messaging-system-with-events?)模块以获取一个示例。
 
-###  9.3. <a name='-1'></a>优缺点
+###  优缺点
 <br>
 
 实现一个事件增加了一些额外的工作，但确实提供了优势：
@@ -2021,7 +2022,7 @@ OnThingHappened方法可以包含观察者在响应事件时执行的任何逻�
 
 <br>
 
-###  9.4. <a name='-1'></a>改进
+###  改进
 <br>
 
 虽然这里只介绍了观察者模式的基本版本，但你可以扩展它以满足你的游戏应用的所有需求。
@@ -2037,7 +2038,7 @@ OnThingHappened方法可以包含观察者在响应事件时执行的任何逻�
 
 <br>
 
-##  10. <a name='MODELVIEWPRESENTERMVP'></a>MODEL VIEW PRESENTER(MVP)
+##  MODEL VIEW PRESENTER(MVP)
 <br>
 
 模型视图控制器（MVC）
@@ -2046,7 +2047,7 @@ OnThingHappened方法可以包含观察者在响应事件时执行的任何逻�
 
 MVC的基本思想是将您的软件的逻辑部分与数据和展示部分分离。这有助于减少不必要的依赖关系，可能减少[意面代码](https://en.wikipedia.org/wiki/Spaghetti_code)。
 
-###  10.1. <a name='MVC'></a>MVC设计模式
+###  MVC设计模式
 <br>
 
 顾名思义，MVC模式将您的应用程序分为三层：
@@ -2063,7 +2064,7 @@ MVC的基本思想是将您的软件的逻辑部分与数据和展示部分分�
 
 表面上，您可以将其视为单一职责原则的扩展。每个部分都有一个任务，并做得很好，这是MVC架构的一个优点。
 
-###  10.2. <a name='ModelViewPresenterMVPUnity'></a>Model View Presenter （MVP）和Unity
+###  Model View Presenter （MVP）和Unity
 <br>
 
 在使用MVC开发Unity项目时，现有的UI框架（[UI Toolkit](https://docs.unity3d.com/Manual/UIElements.html)或[Unity UI](https://docs.unity3d.com/Manual/com.unity.ugui.html)）自然地充当视图。因为引擎为您提供了一个完整的用户界面实现，所以您不需要从头开始开发单独的UI组件。
@@ -2080,7 +2081,7 @@ MVC的基本思想是将您的软件的逻辑部分与数据和展示部分分�
 
 注意事件和观察者模式如何参与此设计。用户可以与Unity UI的按钮、切换和滑块组件进行交互。视图层通过UI事件将这个输入发送回展示器，展示器反过来操作模型。模型的状态更改事件告诉展示器数据已更新。展示器将修改后的数据传递给视图，视图刷新UI。
 
-###  10.3. <a name='-1'></a>示例：健康界面
+###  示例：健康界面
 <br>
 
 为了正式化一个MVP示例，想象一个简单的系统来显示角色或物品的健康状况。您可以将所有内容放入一个混合数据和UI的类中，但这种方式不会很好地扩展。随着功能的增加，扩展它会变得更加复杂。
@@ -2201,7 +2202,7 @@ public class HealthPresenter : MonoBehaviour
 
 在示例项目中，用户可以点击来损坏目标对象或使用按钮重置健康。这些通知HealthPresenter（调用Damage或Reset），而不是直接更改Health。当Health引发事件并通知HealthPresenter其值已更改时，UI文本和UI滑块更新。
 
-###  10.4. <a name='-1'></a>优缺点
+###  优缺点
 <br>
 
 MVP（和MVC）真正为较大的应用程序发光。如果您的游戏需要一个大小适中的团队来开发，并且您希望在启动后长时间维护它，您可能会从以下方面受益：
@@ -2219,7 +2220,7 @@ MVP（和MVC）真正为较大的应用程序发光。如果您的游戏需要�
 
 <br>
 
-##  11. <a name='-1'></a>结论
+##  结论
 <br>
 
 如果您是软件模式的新手，我们希望本指南能帮助您了解Unity开发中您可能遇到的一些最常见的模式。
@@ -2231,10 +2232,57 @@ MVP（和MVC）真正为较大的应用程序发光。如果您的游戏需要�
 所以，虽然您不需要重新发明轮子，但您绝对可以为其增添自己的特色。
 
 <br>
+- [Level Up Your Code With Game Progamming Simplified-Chinese](#level-up-your-code-with-game-progamming-simplified-chinese)
+  - [介绍设计模式](#介绍设计模式)
+  - [SOLID原则](#solid原则)
+    - [单一职责原则](#单一职责原则)
+    - [开闭原则](#开闭原则)
+    - [里氏替换原则](#里氏替换原则)
+    - [接口隔离原则](#接口隔离原则)
+    - [依赖反转原则](#依赖反转原则)
+    - [SOLID理解](#solid理解)
+  - [为游戏开发设计模式](#为游戏开发设计模式)
+    - [\<四人帮](#四人帮)
+    - [学习设计模式](#学习设计模式)
+  - [FACTORY PATTERN](#factory-pattern)
+    - [示例：一个简单的工厂](#示例一个简单的工厂)
+    - [优点和缺点](#优点和缺点)
+    - [改进](#改进)
+  - [OBJECT POOL](#object-pool)
+    - [示例：简单的池系统](#示例简单的池系统)
+    - [改进](#改进-1)
+    - [UnityEngine.Pool](#unityenginepool)
+  - [SINGLETON PATTERN](#singleton-pattern)
+    - [示例：简单的单例](#示例简单的单例)
+    - [持久性和延迟实例化](#持久性和延迟实例化)
+    - [使用泛型](#使用泛型)
+    - [优点和缺点](#优点和缺点-1)
+  - [COMMAND PATTERN](#command-pattern)
+    - [命令对象和命令调用者](#命令对象和命令调用者)
+    - [示例：可撤销的移动](#示例可撤销的移动)
+    - [优点和缺点：](#优点和缺点-2)
+    - [改进](#改进-2)
+  - [STATE PATTERN](#state-pattern)
+    - [状态和状态机](#状态和状态机)
+    - [示例：简单的状态模式](#示例简单的状态模式)
+    - [优缺点](#优缺点)
+    - [改进](#改进-3)
+  - [OBSERVER PATTERN](#observer-pattern)
+    - [事件](#事件)
+    - [示例：简单的主体和观察者](#示例简单的主体和观察者)
+    - [优缺点](#优缺点-1)
+    - [改进](#改进-4)
+  - [MODEL VIEW PRESENTER(MVP)](#model-view-presentermvp)
+    - [MVC设计模式](#mvc设计模式)
+    - [Model View Presenter （MVP）和Unity](#model-view-presenter-mvp和unity)
+    - [示例：健康界面](#示例健康界面)
+    - [优缺点](#优缺点-2)
+  - [结论](#结论)
+  - [其他设计模式](#其他设计模式)
 
 <br>
 
-##  12. <a name='-1'></a>其他设计模式
+##  其他设计模式
 <br>
 
 本指南只是计算和游戏开发中几种众所周知的设计模式的小部分样本。虽然我们不会深入探讨它们的细节，但以下是对您可能觉得有用的其他一些模式的简要概述：

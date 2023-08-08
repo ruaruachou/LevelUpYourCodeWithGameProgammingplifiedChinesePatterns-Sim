@@ -1,6 +1,51 @@
 # Level Up Your Code With Game Progamming SimplifiedChinesePatterns-Sim
 
-[toc]
+- [Level Up Your Code With Game Progamming SimplifiedChinesePatterns-Sim](#level-up-your-code-with-game-progamming-simplifiedchinesepatterns-sim)
+  - [介绍设计模式](#介绍设计模式)
+    - [开闭原则](#开闭原则)
+    - [里氏替换原则 Liskov substitution principle](#里氏替换原则-liskov-substitution-principle)
+    - [Interface segregation principle 接口隔离原则](#interface-segregation-principle-接口隔离原则)
+    - [Dependency inversion principle 依赖反转原则](#dependency-inversion-principle-依赖反转原则)
+    - [A SOLID understanding SOLID理解](#a-solid-understanding-solid理解)
+  - [为游戏开发设计模式 DESIGN PATTERNS FOR GAME DEVELOPMENT](#为游戏开发设计模式-design-patterns-for-game-development)
+    - [The Gang of Four 四人帮](#the-gang-of-four-四人帮)
+    - [Learning design patterns 学习设计模式](#learning-design-patterns-学习设计模式)
+  - [FACTORY PATTERN](#factory-pattern)
+    - [Example: A simple factory 示例：一个简单的工厂](#example-a-simple-factory-示例一个简单的工厂)
+    - [Pros and cons 优点和缺点](#pros-and-cons-优点和缺点)
+    - [Improvements 改进](#improvements-改进)
+  - [5. OBJECT POOL](#5-object-pool)
+    - [Example: Simple pool system 示例：简单的池系统](#example-simple-pool-system-示例简单的池系统)
+    - [Improvements 改进](#improvements-改进-1)
+    - [UnityEngine.Pool](#unityenginepool)
+  - [SINGLETON PATTERN](#singleton-pattern)
+    - [Example: Simple singleton 示例：简单的单例](#example-simple-singleton-示例简单的单例)
+    - [Persistence and lazy instantiation 持久性和延迟实例化](#persistence-and-lazy-instantiation-持久性和延迟实例化)
+    - [Using generics 使用泛型](#using-generics-使用泛型)
+    - [优点和缺点](#优点和缺点)
+  - [COMMAND PATTERN](#command-pattern)
+    - [The command object and command invoker 命令对象和命令调用者](#the-command-object-and-command-invoker-命令对象和命令调用者)
+    - [示例：可撤销的移动 Example: Undoable movement](#示例可撤销的移动-example-undoable-movement)
+    - [Pros and cons 优点和缺点：](#pros-and-cons-优点和缺点-1)
+    - [Improvements 改进](#improvements-改进-2)
+  - [STATE PATTERN](#state-pattern)
+    - [状态和状态机 States and state machines](#状态和状态机-states-and-state-machines)
+    - [示例：简单的状态模式 Example: Simple state pattern](#示例简单的状态模式-example-simple-state-pattern)
+    - [优缺点 Pros and cons](#优缺点-pros-and-cons)
+    - [改进 Improvements](#改进-improvements)
+  - [OBSERVER PATTERN](#observer-pattern)
+    - [事件 Events](#事件-events)
+    - [简单的主体和观察者 Example: Simple subject and observer](#简单的主体和观察者-example-simple-subject-and-observer)
+    - [优缺点 Pros and cons](#优缺点-pros-and-cons-1)
+    - [改进 Improvements](#改进-improvements-1)
+  - [MODEL VIEW PRESENTER(MVP)](#model-view-presentermvp)
+    - [MVC设计模式 Model View Controller (MVC) design pattern](#mvc设计模式-model-view-controller-mvc-design-pattern)
+    - [Model View Presenter （MVP）和Unity](#model-view-presenter-mvp和unity)
+    - [示例：健康界面 Example: Health interface](#示例健康界面-example-health-interface)
+    - [优缺点 Pros and cons](#优缺点-pros-and-cons-2)
+  - [结论](#结论)
+  - [其他设计模式 Other design patterns](#其他设计模式-other-design-patterns)
+
 
 ## 介绍设计模式
 When working in Unity, you don’t have to reinvent the wheel . It’s likely someone has already invented one for you .
@@ -215,7 +260,7 @@ When refactoring, consider how rearranging code will improve the quality of life
 请查看Rich Hickey的讲座[《简单即易》](https://www.infoq.com/presentations/Simple-Made-Easy/)，以了解简单性如何帮助你构建更好的软件。
 <br> 
 
-###  2.2. <a name='-1'></a>开闭原则
+### 开闭原则
 <br>
 The open-closed principle (OCP) in SOLID design says that classes must be open for extension but closed for modification . Structure your classes so that you can create new behavior without modifying the original code .
 
@@ -327,7 +372,7 @@ Take advantage of interfaces and abstraction when creating new classes in Unity 
 在Unity中创建新的类时，利用接口和抽象。这有助于避免在你的逻辑中出现难以后期扩展的繁琐的switch或if语句。一旦你习惯了设置你的类来尊重OCP，长期添加新的代码变得更简单。  
 <br>  
 
-###  2.3. <a name='-1'></a>里氏替换原则 Liskov substitution principle
+###  里氏替换原则 Liskov substitution principle
 <br>
 
 The Liskov substitution principle (LSP) states that derived classes must be substitutable for their base class . Inheritance in object-oriented programming allows you to add functionality through subclasses . However, this can lead to unnecessary complexity if you’re not careful .
@@ -503,7 +548,7 @@ Follow the Liskov substitution principle to limit how you use inheritance to kee
 遵循里氏替换原则，限制你如何使用继承，保持你的代码库可扩展和灵活。  
 <br>
 
-###  2.4. <a name='-1'></a>Interface segregation principle 接口隔离原则
+###  Interface segregation principle 接口隔离原则
 <br>
 
 The interface segregation principle (ISP) states that no client should be forced to depend on methods it does not use .
@@ -613,7 +658,7 @@ Again, this favors composition over inheritance, similar to the example with Lis
 
 <br>  
 
-###  2.5. <a name='-1'></a>Dependency inversion principle 依赖反转原则
+###  Dependency inversion principle 依赖反转原则
 <br>
 The dependency inversion principle (DIP) says that high-level modules should not import anything directly from low-level modules . Both should depend on abstractions .
 
@@ -852,7 +897,7 @@ Like the rest of SOLID, the dependency inversion principle asks you to examine h
 
 <br>
 
-###  2.6. <a name='SOLID-1'></a>A SOLID understanding SOLID理解
+###  A SOLID understanding SOLID理解
 <br>
 
 Getting to know the SOLID principles is a matter of daily practice . Think of them as five basic rules to always keep in mind while coding . Here’s a handy recap: 
@@ -888,7 +933,7 @@ For more information, be sure to check out the Unity SOLID presentationfrom Unit
 
 <br>
 
-##  3. <a name='-1'></a>为游戏开发设计模式
+##  为游戏开发设计模式 DESIGN PATTERNS FOR GAME DEVELOPMENT
 <br>
 
 Once you understand the SOLID principles, you’ll want to dive deeper into design patterns .
@@ -909,7 +954,7 @@ When developers encounter the same problem in the wild, many of them will inevit
   
  <br>
 
-###  3.1. <a name='-1'></a>The Gang of Four 四人帮
+###  The Gang of Four 四人帮
 <br>
 
 Many of today’s software design patterns stem from the seminal work, Design Patterns: Elements of Reusable Object-Oriented Software by Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides . This book describes 23 such patterns identified in a variety of day-to-day applications . 
@@ -926,7 +971,7 @@ Since the Gang of Four originally published Design Patterns in 1994,  developers
   
   <br>
 
-###  3.2. <a name='-1'></a>Learning design patterns 学习设计模式
+###  Learning design patterns 学习设计模式
 <br>
 
 While you can work as a game programmer without studying design patterns, learning them will only help you become a better developer . After all, design patterns are labeled as such because they’re common solutions to well-known problems .
@@ -995,7 +1040,7 @@ Of course, Unity can’t do everything for you . Inevitably you’ll need other 
 <br>
 <br>
 
-##  4. <a name='FACTORYPATTERN'></a>FACTORY PATTERN
+##  FACTORY PATTERN
 
 <br>
 
@@ -1017,7 +1062,7 @@ You can also subclass the factory to make multiple factories dedicated to specif
 
 你还可以对工厂进行子类化，制作多个专门用于特定产品的工厂。这样做有助于在运行时生成敌人、障碍物或其他任何事物。
 
-###  4.1. <a name='-1'></a>Example: A simple factory 示例：一个简单的工厂
+###  Example: A simple factory 示例：一个简单的工厂
 
 
 Imagine you want to create a factory pattern to instantiate items for a game level . You can use Prefabs to create GameObjects, but you might also want to run some custom behavior when creating each instance .
@@ -1130,7 +1175,7 @@ Explore the sample project to see how the ClickToCreate component switches betwe
 
 探索示例项目，看看ClickToCreate组件如何切换工厂来创建ProductA和ProductB，它们有不同的行为。ProductB在生成时播放一个声音，而ProductA则启动一个粒子效果。  
 
-###  4.2. <a name='-1'></a>Pros and cons 优点和缺点
+###  Pros and cons 优点和缺点
 
 <br>
 
@@ -1152,7 +1197,7 @@ The downside is that you create a number of classes and subclasses to implement 
 <br>  
 <br>
 
-###  4.3. <a name='-1'></a>Improvements 改进
+###  Improvements 改进
 <br>
 
 The implementation of the factory can vary widely from what’s shown here . Consider the following adjustments when building your own factory pattern:
@@ -1175,7 +1220,7 @@ Factories can spawn any gameplay element on an as-needed basis . Note, however, 
 
 <br>
 
-##  5. <a name='OBJECTPOOL'></a>OBJECT POOL  
+##  5. OBJECT POOL  
 <br>
 Object pooling is an optimization technique to relieve the CPU when creating and destroying a lot of GameObjects . 
 
@@ -1195,7 +1240,7 @@ Object pools can reduce stuttering that may result from garbage collection spike
 
 >![image error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/21.png?raw=true)
 
-###  5.1. <a name='-1'></a>Example: Simple pool system 示例：简单的池系统
+###  Example: Simple pool system 示例：简单的池系统
 <br>
 
 Consider a simple pooling system with two defined MonoBehaviours:
@@ -1336,7 +1381,7 @@ If you’ve used Unity’s ParticleSystem, then you have firsthand experience wi
 
 <br>
 
-###  5.2. <a name='-1'></a>Improvements 改进
+###  Improvements 改进
 
 
 The example above is a simple one . When deploying an object pool for actual projects, consider the following upgrades:
@@ -1370,7 +1415,7 @@ If you’re using a version of Unity from 2021 and above, it includes a built-in
 
 <br>
 
-###  5.3. <a name='UnityEngine.Pool'></a>UnityEngine.Pool 
+###  UnityEngine.Pool 
 <br>
 
 The object pool pattern is so ubiquitous that Unity 2021 now supports its own UnityEngine .Pool API . This gives you a stack-based ObjectPool to track your objects with the object pool pattern . Depending on your needs, you can also use a CollectionPool (List, HashSet, Dictionary, etc .)
@@ -1476,7 +1521,8 @@ The UnityEngine .Pool API makes setting up object pools faster, now that you don
 UnityEngine.Pool API使设置对象池更快,现在您不必从头重新构建该模式。这是一个轮子不必重新发明。
 
 <br>
-##  6. <a name='SINGLETONPATTERN'></a>SINGLETON PATTERN
+
+##  SINGLETON PATTERN
 <br>
 
 Singletons get a bad rap . If you’re new to Unity development, the singleton is likely one of the first recognizable patterns that you will encounter in the wild . It’s also one of the most maligned design patterns .
@@ -1507,7 +1553,7 @@ Let’s examine how to build a singleton in Unity and weigh its strengths and we
 
 <br>  
 
-###  6.1. <a name='-1'></a>Example: Simple singleton 示例：简单的单例
+###  Example: Simple singleton 示例：简单的单例
 <br>
 
 One of the simplest singletons might look like this:
@@ -1558,7 +1604,7 @@ The Instance field is public and static . Any component has global access to the
 
 Instance 字段是公开的和静态的。任何组件都可以从场景中的任何地方全局访问唯一的单例。
 
-###  6.2. <a name='-1'></a>Persistence and lazy instantiation 持久性和延迟实例化
+###  Persistence and lazy instantiation 持久性和延迟实例化
 
 
 The SimpleSingleton works as written . However, it does suffer from two issues:
@@ -1637,7 +1683,7 @@ DontDestroyOnLoad(gameObject) 阻止场景加载从层次结构中清除单例�
 <br>
 
 
-###  6.3. <a name='-1'></a>Using generics 使用泛型 
+###  Using generics 使用泛型 
 
 
 Neither version of the script addresses how to create different singletons within the same scene . For example, if you want a singleton that behaves as an AudioManager and another singleton as a GameManager, they can’t coexist right now . You’ll need to duplicate the relevant code and paste the logic into each class .
@@ -1742,7 +1788,7 @@ Then you can always refer to the public static GameManager.Instancewhenever you 
 
 <br>
 
-###  6.4. <a name='-1'></a>优点和缺点  
+###  优点和缺点  
 <br>
 
 Singletons are unlike the other patterns in this guide in that they break with SOLID principles in several respects . Many developers dislike them for a variety of reasons:
@@ -1783,7 +1829,7 @@ If you decide to use singletons in your project, keep them to a minimum . Don’
 
 <br>
 
-##  7. <a name='COMMANDPATTERN'></a>COMMAND PATTERN
+##  COMMAND PATTERN
 
 <br>
 
@@ -1808,7 +1854,7 @@ To implement the command pattern, you need a general object that will contain yo
 
 <br>  
 
-###  7.1. <a name='-1'></a>The command object and command invoker 命令对象和命令调用者
+###  The command object and command invoker 命令对象和命令调用者
 
 <br>
 There are a number of ways to implement this, but here’s one version that uses an interface:
@@ -1856,7 +1902,7 @@ public class CommandInvoker
 
 ```
 
-###  7.2. <a name='-1'></a>示例：可撤销的移动 Example: Undoable movement
+###  示例：可撤销的移动 Example: Undoable movement
 <br>
 
 Let’s imagine you want to move your player around a maze in your application .You could create a PlayerMover responsible for shifting the player’s position:
@@ -1963,7 +2009,7 @@ Check out the sample project for implementation details for the InputManager or 
 
 查看示例项目以获取InputManager的实现细节，或使用键盘或游戏手柄设置您自己的输入。您的玩家现在可以导航迷宫。点击Undo按钮，您可以回退到起始方块。
 
-###  7.3. <a name='-1'></a>Pros and cons 优点和缺点：
+###  Pros and cons 优点和缺点：
 <br>
 
 Implementing replayability or undoability is as simple as generating a collection of command objects . You can also use the command buffer to play back actions in sequence with specific controls .
@@ -1978,7 +2024,7 @@ On the flip side, the command pattern introduces more structure, just like the o
 
 另一方面，命令模式引入了更多的结构，就像其他设计模式一样。您必须决定这些额外的类和接口是否为在应用程序中部署命令对象提供了足够的好处。
 
-###  7.4. <a name='-1'></a>Improvements 改进
+###  Improvements 改进
 <br>
 
 Once you learn the basics, you can affect the timing of commands and play them back in succession or reverse, depending on the context .
@@ -2010,7 +2056,7 @@ CommandInvoker与其他外部对象一样，不看到命令对象的内部工作
 
 <br>  
 
-##  8. <a name='STATEPATTERN'></a>STATE PATTERN
+##  STATE PATTERN
 
 <br>
 
@@ -2018,7 +2064,7 @@ Imagine constructing a playable character . At one moment, the character may be 
 
 想象你正在构建一个可玩的角色。在某一时刻，角色可能站在地面上。移动控制器，它看起来像是在跑或走路。按跳跃按钮，角色跳入空中。几帧后，它降落并重新进入其空闲、站立的位置。
 
-###  8.1. <a name='-1'></a>状态和状态机 States and state machines
+###  状态和状态机 States and state machines
 
 <br>
 
@@ -2103,7 +2149,7 @@ This would work, but the PlayerController script can get messy quickly . Adding 
 
 这样做是可行的，但PlayerController脚本很快就会变得混乱。增加更多的状态和复杂性每次都需要我们重新查看PlayerController脚本的内部。
 
-###  8.2. <a name='-1'></a>示例：简单的状态模式 Example: Simple state pattern
+###  示例：简单的状态模式 Example: Simple state pattern
 
 <br>
 
@@ -2273,7 +2319,7 @@ Review the sample project for the WalkState and JumpState implementation as well
 
 也请查看WalkState和JumpState的示例项目实现。与其拥有一个切换行为的大型类，不如让每个状态都有自己的更新逻辑。这样，状态可以彼此独立地工作。
 
-###  8.3. <a name='-1'></a>优缺点 Pros and cons
+###  优缺点 Pros and cons
 
 <br>
 
@@ -2287,7 +2333,7 @@ On the other hand, if you only have a few states to track, the extra structure c
 
 ![connect error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/32.png?raw=true)状态模式示例 The state pattern sample
 
-###  8.4. <a name='-1'></a>改进 Improvements
+###  改进 Improvements
 <br>
 
 The capsule in the sample project changes color, and the UI updates with the player’s internal state . In a real-world example, you could have much more complex effects to accompany the state changes:
@@ -2320,7 +2366,8 @@ Here’s the state pattern at work again in a completely different context . Eve
 这里再次展示了状态模式在完全不同的上下文中的工作原理。每个状态代表一个动作，如攻击、逃跑或巡逻。每次只有一个状态是活动的，每个状态决定其转换到下一个状态。
 
 <br>
-##  9. <a name='OBSERVERPATTERN'></a>OBSERVER PATTERN
+
+##  OBSERVER PATTERN
 
 <br>
 
@@ -2342,7 +2389,7 @@ This pattern loosely decouples the subject, which doesn’t really know the obse
 
 这种模式松散地解耦了主体，它实际上不真正知道观察者或关心它们在接收到信号后做什么。虽然观察者对主体有依赖，但观察者本身不知道彼此。
 
-###  9.1. <a name='-1'></a>事件 Events
+###  事件 Events
 <br>
 
 The observer pattern is so widespread that it’s built into the C# language . You can design your own subject-observer classes but it’s usually unnecessary . Remember the point about reinventing the wheel? C# already implements the pattern using events .
@@ -2368,7 +2415,7 @@ In this way, you make many components react to a single event from the subject .
 
 ![connect error](https://github.com/ruaruachou/LevelUpYourCodeWithGameProgammingplifiedChinesePatterns-Sim/blob/main/Pictures/36.png?raw=true)主体引发事件通知观察者。 The subject raises the event to notify the observers .
 
-###  9.2. <a name='-1'></a>示例：简单的主体和观察者 Example: Simple subject and observer
+###  简单的主体和观察者 Example: Simple subject and observer
 <br>
 
 For example, you might define a basic subject/publisher like this: 
@@ -2508,7 +2555,7 @@ UnityEvents为观察者模式提供了一个图形界面。如果你已经使用
 >Weigh performance versus usage when considering UnityEvents and UnityActions . See the Create a Simple Messaging System with Eventsmodule on Unity Learn for an example .
 在考虑使用UnityEvents和UnityActions时，权衡性能与使用方法。查看Unity Learn上的[Create a Simple Messaging System with Events](https://learn.unity.com/tutorial/create-a-simple-messaging-system-with-events?)模块以获取一个示例。
 
-###  9.3. <a name='-1'></a>优缺点 Pros and cons
+###  优缺点 Pros and cons
 <br>
 
 Implementing an event adds some extra work but does offer advantages:
@@ -2535,7 +2582,7 @@ Be aware of these caveats for the observer pattern:
 
 <br>
 
-###  9.4. <a name='-1'></a>改进 Improvements
+###  改进 Improvements
 <br>
 
 While only a basic version of the observer pattern is introduced here, you can expand this to handle all of your game application’s needs . 
@@ -2560,7 +2607,7 @@ The observer pattern heavily figures into the Model View Presenter (MVP) archite
 
 <br>
 
-##  10. <a name='MODELVIEWPRESENTERMVP'></a>MODEL VIEW PRESENTER(MVP)
+##  MODEL VIEW PRESENTER(MVP)
 <br>
 
 模型视图控制器（MVC） Model View Controller (MVC) is a family of design patterns commonly used when developing user interfaces . 
@@ -2573,7 +2620,7 @@ The general idea behind MVC is to separate the logical portion of your software 
 
 MVC的基本思想是将您的软件的逻辑部分与数据和展示部分分离。这有助于减少不必要的依赖关系，可能减少[意面代码](https://en.wikipedia.org/wiki/Spaghetti_code)。
 
-###  10.1. <a name='MVC'></a>MVC设计模式 Model View Controller (MVC) design pattern
+###  MVC设计模式 Model View Controller (MVC) design pattern
 <br>
 
 As the name implies, the MVC pattern splits your application into three layers:
@@ -2601,7 +2648,7 @@ On the surface, you can think of this as an extension of the single-responsibili
 
 表面上，您可以将其视为单一职责原则的扩展。每个部分都有一个任务，并做得很好，这是MVC架构的一个优点。
 
-###  10.2. <a name='ModelViewPresenterMVPUnity'></a>Model View Presenter （MVP）和Unity
+###  Model View Presenter （MVP）和Unity
 <br>
 
 When developing a Unity project with MVC, the existing UI framework (either the UI Toolkit or Unity UI) naturally functions as the View . Because the engine gives you a complete user interface implementation, you won’t need to develop individual UI components from scratch .
@@ -2630,7 +2677,7 @@ Notice how events and the observer pattern figure into this design . The user ca
 
 注意事件和观察者模式如何参与此设计。用户可以与Unity UI的按钮、切换和滑块组件进行交互。视图层通过UI事件将这个输入发送回展示器，展示器反过来操作模型。模型的状态更改事件告诉展示器数据已更新。展示器将修改后的数据传递给视图，视图刷新UI。
 
-###  10.3. <a name='-1'></a>示例：健康界面 Example: Health interface
+###  示例：健康界面 Example: Health interface
 <br>
 
 To formalize an MVP example, imagine a simple system to show the health of a character or item . You could stuff everything into one class that mixes the data and UI, but that wouldn’t scale well . Adding more functionality would become more complicated as you need to expand it .  
@@ -2763,14 +2810,59 @@ In the sample project, the user can click to damage the target object or reset t
 
 在示例项目中，用户可以点击来损坏目标对象或使用按钮重置健康。这些通知HealthPresenter（调用Damage或Reset），而不是直接更改Health。当Health引发事件并通知HealthPresenter其值已更改时，UI文本和UI滑块更新。
 
-###  10.4. <a name='-1'></a>优缺点 Pros and cons
+###  优缺点 Pros and cons
 <br>
 
 MVP (and MVC) really shine for larger applications . If your game requires a sizable team to develop and you expect to maintain it for a long time after launch, you might benefit from the following:
 
 MVP（和MVC）真正为较大的应用程序发光。如果您的游戏需要一个大小适中的团队来开发，并且您希望在启动后长时间维护它，您可能会从以下方面受益：
 
-+ **平滑的工作分割：** 因为您已经将视图从展示器中分离出来，所以可以几乎独立地开发和更新您的用户界面。这样，您可以在专业的开发者之间划分您的劳动。您的团队中有专家前端开发者吗？让他们负责视图。他们可以独立于其他人工作。Smooth division of work: Because you’ve separated the View from the Presenter, developing and updating your user interface can happen nearly independently from the rest of the codebase .   This lets you divide your labor between specialized developers . Do you have expert front-end developers on your team? Let them take care of the View . They can work independently from everyone else . 
++ **平滑的工作分割：** 因为您已经将视图从展示器中分离出来，所以可以几乎独立地开发和更新您的用户界面- [Level Up Your Code With Game Progamming SimplifiedChinesePatterns-Sim](#level-up-your-code-with-game-progamming-simplifiedchinesepatterns-sim)
+  - [介绍设计模式](#介绍设计模式)
+    - [开闭原则](#开闭原则)
+    - [里氏替换原则 Liskov substitution principle](#里氏替换原则-liskov-substitution-principle)
+    - [Interface segregation principle 接口隔离原则](#interface-segregation-principle-接口隔离原则)
+    - [Dependency inversion principle 依赖反转原则](#dependency-inversion-principle-依赖反转原则)
+    - [A SOLID understanding SOLID理解](#a-solid-understanding-solid理解)
+  - [为游戏开发设计模式 DESIGN PATTERNS FOR GAME DEVELOPMENT](#为游戏开发设计模式-design-patterns-for-game-development)
+    - [The Gang of Four 四人帮](#the-gang-of-four-四人帮)
+    - [Learning design patterns 学习设计模式](#learning-design-patterns-学习设计模式)
+  - [FACTORY PATTERN](#factory-pattern)
+    - [Example: A simple factory 示例：一个简单的工厂](#example-a-simple-factory-示例一个简单的工厂)
+    - [Pros and cons 优点和缺点](#pros-and-cons-优点和缺点)
+    - [Improvements 改进](#improvements-改进)
+  - [5. OBJECT POOL](#5-object-pool)
+    - [Example: Simple pool system 示例：简单的池系统](#example-simple-pool-system-示例简单的池系统)
+    - [Improvements 改进](#improvements-改进-1)
+    - [UnityEngine.Pool](#unityenginepool)
+  - [SINGLETON PATTERN](#singleton-pattern)
+    - [Example: Simple singleton 示例：简单的单例](#example-simple-singleton-示例简单的单例)
+    - [Persistence and lazy instantiation 持久性和延迟实例化](#persistence-and-lazy-instantiation-持久性和延迟实例化)
+    - [Using generics 使用泛型](#using-generics-使用泛型)
+    - [优点和缺点](#优点和缺点)
+  - [COMMAND PATTERN](#command-pattern)
+    - [The command object and command invoker 命令对象和命令调用者](#the-command-object-and-command-invoker-命令对象和命令调用者)
+    - [示例：可撤销的移动 Example: Undoable movement](#示例可撤销的移动-example-undoable-movement)
+    - [Pros and cons 优点和缺点：](#pros-and-cons-优点和缺点-1)
+    - [Improvements 改进](#improvements-改进-2)
+  - [STATE PATTERN](#state-pattern)
+    - [状态和状态机 States and state machines](#状态和状态机-states-and-state-machines)
+    - [示例：简单的状态模式 Example: Simple state pattern](#示例简单的状态模式-example-simple-state-pattern)
+    - [优缺点 Pros and cons](#优缺点-pros-and-cons)
+    - [改进 Improvements](#改进-improvements)
+  - [OBSERVER PATTERN](#observer-pattern)
+    - [事件 Events](#事件-events)
+    - [简单的主体和观察者 Example: Simple subject and observer](#简单的主体和观察者-example-simple-subject-and-observer)
+    - [优缺点 Pros and cons](#优缺点-pros-and-cons-1)
+    - [改进 Improvements](#改进-improvements-1)
+  - [MODEL VIEW PRESENTER(MVP)](#model-view-presentermvp)
+    - [MVC设计模式 Model View Controller (MVC) design pattern](#mvc设计模式-model-view-controller-mvc-design-pattern)
+    - [Model View Presenter （MVP）和Unity](#model-view-presenter-mvp和unity)
+    - [示例：健康界面 Example: Health interface](#示例健康界面-example-health-interface)
+    - [优缺点 Pros and cons](#优缺点-pros-and-cons-2)
+  - [结论](#结论)
+  - [其他设计模式 Other design patterns](#其他设计模式-other-design-patterns)
+。这样，您可以在专业的开发者之间划分您的劳动。您的团队中有专家前端开发者吗？让他们负责视图。他们可以独立于其他人工作。Smooth division of work: Because you’ve separated the View from the Presenter, developing and updating your user interface can happen nearly independently from the rest of the codebase .   This lets you divide your labor between specialized developers . Do you have expert front-end developers on your team? Let them take care of the View . They can work independently from everyone else . 
 
 
 + **使用MVP和MVC简化单元测试：** 这些设计模式将游戏逻辑与用户界面分离。因此，您可以模拟对象与您的代码一起工作，而无需实际进入编辑器的播放模式。这可以节省大量的时间。Simplified unit testing with MVP and MVC: These design patterns separate gameplay logic from the user interface . As such, you can simulate objects to work with your code without actually needing to enter Play mode in the Editor . This can save considerable amounts of time .
@@ -2793,7 +2885,7 @@ You’ll need to exercise judgment where you can stand to benefit the most from 
 
 <br>
 
-##  11. <a name='-1'></a>结论
+##  结论
 <br>
 
 If you’re new to software patterns, we hope this guide has helped you understand some of the most common ones you can encounter in Unity development .
@@ -2816,7 +2908,7 @@ So, while you don’t need to reinvent the wheel, you can definitely put your ow
 
 <br>
 
-##  12. <a name='-1'></a>其他设计模式 Other design patterns
+##  其他设计模式 Other design patterns
 <br>
 
 This guide is just a small sampling of several well-known design patterns in computing and game development . While we won’t go into their specifics, here’s a brief overview of some others that may be useful to you:
